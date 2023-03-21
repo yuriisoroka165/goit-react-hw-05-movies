@@ -11,9 +11,10 @@ export function SharedLayout() {
                     <Link to="/movies">Movies</Link>
                 </nav>
             </header>
-            {/* модуль Suspense призупиняє відображення компонента поки незакінчиться асинхронне завантаження React.lazy() */}
-            {/* в даному випадку покаже заглушку */}
             <div className={"container"}>
+                {/* модуль Suspense призупиняє відображення компонента 
+                    поки незакінчиться асинхронне завантаження React.lazy() */}
+                {/* в даному випадку покаже заглушку */}
                 <Suspense fallback={<div>Loading page...</div>}>
                     <Outlet />
                 </Suspense>
