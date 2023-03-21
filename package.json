@@ -2,7 +2,8 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yuriisoroka165.github.io/ggoit-react-hw-05-movies/",
+  "homepage": "/",
+  "main": "src/index.js",
   "dependencies": {
     "axios": "^1.3.4",
     "nanoid": "^4.0.1",
