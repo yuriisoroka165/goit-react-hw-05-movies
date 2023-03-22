@@ -1,4 +1,3 @@
-// import css from "./App.module.css";
 import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
@@ -13,6 +12,8 @@ const Cast = lazy(() => import("../components/Cast/Cast"));
 const Reviews = lazy(() => import("../components/Reviews/Reviews"));
 
 export function App() {
+    
+
     return (
         // опис всіх маршрутів
         <Routes>

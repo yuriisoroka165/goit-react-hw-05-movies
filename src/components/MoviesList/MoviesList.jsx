@@ -1,33 +1,26 @@
-import { useEffect, useState } from "react";
-import fetchData from "services/image-fetch-api";
+import PropTypes from "prop-types";
+import { Link, useLocation } from "react-router-dom";
+import { Container, LinkWrapper, MovieName } from "./MoviesList.styled";
 
-export const MovieList = () => {
-    const [movies, setMovies] = useState([]);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const getTrending = async () => {
-            try {
-                const { results } = await fetchData();
-                setMovies(results);
-            } catch (error) {
-                setError(error.message);
-            }
-        };
-
-        getTrending();
-    }, []);
-
+export const MovieList = ({ movies }) => {
+    const location = useLocation();
     return (
-        <>
-            {movies && (
-                <ul>
-                    {movies.map(movie => (
-                        <li key={movie.id}>{movie.original_title}</li>
-                    ))}
-                </ul>
-            )}
-            {error}
-        </>
+        <Container>
+            {movies.map(movie => (
+                <LinkWrapper key={movie.id}>
+                    <Link to={`${movie.id}`} state={{ from: location }}>
+                        <img
+                            src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
+                            alt=""
+                        />
+                        <MovieName>{movie.original_title}</MovieName>
+                    </Link>
+                </LinkWrapper>
+            ))}
+        </Container>
     );
+};
+
+MovieList.propTypes = {
+    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
