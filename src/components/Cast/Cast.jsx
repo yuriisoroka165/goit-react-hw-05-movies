@@ -28,18 +28,16 @@ function Cast() {
             <h1>Cast</h1>
             <CastList>
                 {cast.map(actor => {
-                    if (actor.profile_path) {
-                        return (
-                            <CastItem key={actor.id}>
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w154/${actor.profile_path}`}
-                                    alt={`${actor.name}`}
-                                />
-                                <h4>{actor.name}</h4>
-                                <p>Character: {actor.character}</p>
-                            </CastItem>
-                        );
-                    }
+                    return actor.profile_path ? (
+                        <CastItem key={actor.id}>
+                            <img
+                                src={`https://image.tmdb.org/t/p/w154/${actor.profile_path}`}
+                                alt={`${actor.name}`}
+                            />
+                            <h4>{actor.name}</h4>
+                            <p>Character: {actor.character}</p>
+                        </CastItem>
+                    ) : null;
                 })}
             </CastList>
         </Container>
