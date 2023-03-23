@@ -11,7 +11,7 @@ function Home() {
     useEffect(() => {
         const getTrending = async () => {
             try {
-                const { results } = await fetchData();
+                const { results } = await fetchData("trending/movie/day");
                 setMovies(results);
             } catch (error) {
                 setError(error.message);
@@ -23,11 +23,11 @@ function Home() {
     }, []);
 
     return (
-        <main>
+        <>
             <h1>Trending movies today</h1>
             {movies && <MovieList movies={movies} />}
             {error && <ToastContainer autoClose={3000} />}
-        </main>
+        </>
     );
 }
 

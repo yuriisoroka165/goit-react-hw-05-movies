@@ -1,13 +1,9 @@
 function Movies() {
     return (
-        <main>
-            <h1>Welcome Movies</h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                minima laudantium nesciunt ducimus excepturi sequi voluptatibus
-                dicta? Molestias, culpa maxime.
-            </p>
-        </main>
+        <>
+            <h1>Welcome Movies Page</h1>
+            <p>Movies Page</p>
+        </>
     );
 }
 
