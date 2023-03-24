@@ -25,7 +25,7 @@ function Home() {
     return (
         <>
             <h1>Trending movies today</h1>
-            {movies && <MovieList movies={movies} />}
+            {movies.length !== 0 && <MovieList movies={movies} />}
             {error && <ToastContainer autoClose={3000} />}
         </>
     );

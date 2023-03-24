@@ -4,8 +4,12 @@ export const Container = styled.div`
     padding: 10px;
     padding-top: 20px;
 
-    > h1 {
+    > h2 {
         margin-bottom: 10px;
+    }
+
+    > p {
+        color: var(--global-black-color);
     }
 `;
 

@@ -25,7 +25,7 @@ function Cast() {
     return (
         <Container>
             {error && <ToastContainer autoClose={3000} />}
-            <h1>Cast</h1>
+            <h2>Cast</h2>
             <CastList>
                 {cast.map(actor => {
                     return actor.profile_path ? (
