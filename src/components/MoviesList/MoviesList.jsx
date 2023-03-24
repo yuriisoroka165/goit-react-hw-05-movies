@@ -14,13 +14,10 @@ export function MovieList({ movies }) {
             {movies.map(movie => {
                 return movie.poster_path ? (
                     <LinkWrapper key={movie.id}>
-                        <Link
-                            to={`movies/${movie.id}`}
-                            state={{ from: location }}
-                        >
+                        <Link to={location.pathname === "/" ? `movies/${movie.id}`: `${movie.id}`} state={{ from: location }}>
                             <img
                                 src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
-                                alt=""
+                                alt={`${movie.name}`}
                             />
                             <MovieName>{movie.original_title}</MovieName>
                         </Link>

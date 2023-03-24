@@ -16,7 +16,7 @@ export function SharedLayout() {
                     поки незакінчиться асинхронне завантаження React.lazy() */}
                 {/* в даному випадку покаже заглушку */}
                 <main>
-                    <Suspense fallback={<div>Loading page...</div>}>
+                    <Suspense fallback={<p>Loading page...</p>}>
                         <Outlet />
                     </Suspense>
                 </main>

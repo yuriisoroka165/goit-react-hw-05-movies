@@ -7,7 +7,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Movies() {
-    // const location
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();

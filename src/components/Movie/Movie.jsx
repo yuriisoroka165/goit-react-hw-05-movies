@@ -1,15 +1,16 @@
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { Suspense } from "react";
 import {
-    Button,
+    Link,
     MovieMainInformation,
     MovieDescription,
     MovieAdditionalInformation,
 } from "./Movie.styled";
 
 export function Movie({ movie }) {
+    const location = useLocation();
     const {
         poster_path,
         original_title,
@@ -20,7 +21,7 @@ export function Movie({ movie }) {
     } = movie;
     return (
         <>
-            <Button>Go back</Button>
+            <Link to={location.state?.from ?? "/"}>Go back</Link>
             <MovieMainInformation>
                 <img
                     src={`https://image.tmdb.org/t/p/w185/${poster_path}`}
@@ -48,14 +49,26 @@ export function Movie({ movie }) {
                 <p>Additional information</p>
                 <ul>
                     <li>
-                        <NavLink to="cast">Cast</NavLink>
+                        {/* state={{from: location.state.from}} - з якої сторінки був перехід бо пр рендері cast і previews змінюється url, 
+                        також для цього можна застосувати хук useRef*/}
+                        <NavLink
+                            to="cast"
+                            state={{ from: location.state.from }}
+                        >
+                            Cast
+                        </NavLink>
                     </li>
                     <li>
-                        <NavLink to="reviews">Reviews</NavLink>
+                        <NavLink
+                            to="reviews"
+                            state={{ from: location.state.from }}
+                        >
+                            Reviews
+                        </NavLink>
                     </li>
                 </ul>
             </MovieAdditionalInformation>
-            <Suspense fallback={<div>Loading subpage...</div>}>
+            <Suspense fallback={<p>Loading subpage...</p>}>
                 <Outlet />
             </Suspense>
         </>

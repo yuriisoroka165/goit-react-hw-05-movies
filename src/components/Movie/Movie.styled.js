@@ -1,12 +1,21 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
-export const Button = styled.button`
+export const Link = styled(NavLink)`
+    display: flex;    
+    align-items: center;
+    justify-content: center;
     width: 80px;
     height: 30px;
     margin-bottom: 10px;
     background-color: var(--global-green-color);
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--global-black-color);
+
 `;
 
 export const MovieMainInformation = styled.div`
