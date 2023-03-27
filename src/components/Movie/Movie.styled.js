@@ -1,8 +1,9 @@
-import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+import styled from "styled-components";
+
 export const Link = styled(NavLink)`
-    display: flex;    
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 80px;
@@ -15,7 +16,6 @@ export const Link = styled(NavLink)`
     font-weight: 500;
     text-decoration: none;
     color: var(--global-black-color);
-
 `;
 
 export const MovieMainInformation = styled.div`
@@ -30,7 +30,9 @@ export const MovieMainInformation = styled.div`
 export const MovieDescription = styled.div`
     padding: 10px;
 
-    > h2,h3,h4 {
+    > h2,
+    h3,
+    h4 {
         margin-bottom: 20px;
     }
 

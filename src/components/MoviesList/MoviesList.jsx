@@ -1,5 +1,7 @@
-import PropTypes from "prop-types";
 import { Link, useLocation } from "react-router-dom";
+
+import PropTypes from "prop-types";
+
 import {
     Container,
     LinkWrapper,
@@ -12,9 +14,17 @@ export function MovieList({ movies }) {
     return (
         <Container>
             {movies.map(movie => {
+                // перевірка чи має фільм постер
                 return movie.poster_path ? (
                     <LinkWrapper key={movie.id}>
-                        <Link to={location.pathname === "/" ? `movies/${movie.id}`: `${movie.id}`} state={{ from: location }}>
+                        <Link
+                            to={
+                                location.pathname === "/"
+                                    ? `movies/${movie.id}`
+                                    : `${movie.id}`
+                            }
+                            state={{ from: location }}
+                        >
                             <img
                                 src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
                                 alt={`${movie.name}`}

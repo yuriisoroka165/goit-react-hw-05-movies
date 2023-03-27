@@ -1,7 +1,8 @@
-import PropTypes from "prop-types";
-import { NavLink, useLocation } from "react-router-dom";
-import { Outlet } from "react-router-dom";
 import { Suspense } from "react";
+import { Outlet, NavLink, useLocation } from "react-router-dom";
+
+import PropTypes from "prop-types";
+
 import {
     Link,
     MovieMainInformation,
@@ -19,9 +20,11 @@ export function Movie({ movie }) {
         overview,
         genres,
     } = movie;
+    const stateFrom = location.state?.from;
     return (
         <>
-            <Link to={location.state?.from ?? "/"}>Go back</Link>
+            {/* повенутись на попередню сторінку або якщо неможливо то на головну */}
+            <Link to={stateFrom ?? "/"}>Go back</Link>
             <MovieMainInformation>
                 <img
                     src={`https://image.tmdb.org/t/p/w185/${poster_path}`}
@@ -30,6 +33,7 @@ export function Movie({ movie }) {
                 />
                 <MovieDescription>
                     <h2>
+                        {/* рік, зі строки дати релізу */}
                         {`${original_title} (${release_date.substr(0, 4)})`}
                     </h2>
                     <p>{`User Score: ${(
@@ -49,20 +53,14 @@ export function Movie({ movie }) {
                 <p>Additional information</p>
                 <ul>
                     <li>
-                        {/* state={{from: location.state.from}} - з якої сторінки був перехід бо пр рендері cast і previews змінюється url, 
+                        {/* state={{from: stateFrom}} - з якої сторінки був перехід бо при рендері cast і previews змінюється url, 
                         також для цього можна застосувати хук useRef*/}
-                        <NavLink
-                            to="cast"
-                            state={{ from: location.state.from }}
-                        >
+                        <NavLink to="cast" state={{ from: stateFrom }}>
                             Cast
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink
-                            to="reviews"
-                            state={{ from: location.state.from }}
-                        >
+                        <NavLink to="reviews" state={{ from: stateFrom }}>
                             Reviews
                         </NavLink>
                     </li>

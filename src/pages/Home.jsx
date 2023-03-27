@@ -1,8 +1,10 @@
-import fetchData from "services/data-fetch-api";
 import { useState, useEffect } from "react";
-import { MovieList } from "components/MoviesList/MoviesList";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import fetchData from "services/data-fetch-api";
+import { MovieList } from "components/MoviesList/MoviesList";
 
 function Home() {
     const [movies, setMovies] = useState([]);

@@ -1,11 +1,14 @@
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import fetchData from "services/data-fetch-api";
-import { Movie } from "components/Movie/Movie";
+import { useParams } from "react-router-dom";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import fetchData from "services/data-fetch-api";
+import { Movie } from "components/Movie/Movie";
+
 function MoviesDetails() {
+    // useParams повертає обєкт з цсіма динамічними властиваостями з поточного URL
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
     const [error, setError] = useState(null);

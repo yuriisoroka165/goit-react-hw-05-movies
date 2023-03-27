@@ -1,9 +1,11 @@
-import { Container, CastList, CastItem } from "./Cast.styled";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import fetchData from "services/data-fetch-api";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { Container, CastList, CastItem } from "./Cast.styled";
+import fetchData from "services/data-fetch-api";
 
 function Cast() {
     const { movieId } = useParams();
@@ -22,12 +24,14 @@ function Cast() {
         };
         getCastData();
     }, [movieId]);
+
     return (
         <Container>
             {error && <ToastContainer autoClose={3000} />}
             <h2>Cast</h2>
             <CastList>
                 {cast.map(actor => {
+                    // перевірка наявності фото актора
                     return actor.profile_path ? (
                         <CastItem key={actor.id}>
                             <img

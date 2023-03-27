@@ -1,9 +1,11 @@
-import { Container, ReviewsList, ReviewsItem } from "./Reviews.styled";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import fetchData from "services/data-fetch-api";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import fetchData from "services/data-fetch-api";
+import { Container, ReviewsList, ReviewsItem } from "./Reviews.styled";
 
 function Reviews() {
     const { movieId } = useParams();
@@ -29,7 +31,9 @@ function Reviews() {
         <Container>
             {error && <ToastContainer autoClose={3000} />}
             <h2>Reviews</h2>
-            {reviews.length === 0 && <p>We don't have any reviews for this movie!</p>}
+            {reviews.length === 0 && (
+                <p>We don't have any reviews for this movie!</p>
+            )}
             <ReviewsList>
                 {reviews.map(review => (
                     <ReviewsItem key={review.id}>

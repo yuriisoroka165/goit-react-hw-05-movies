@@ -1,18 +1,23 @@
-import fetchData from "services/data-fetch-api";
 import { useState, useEffect } from "react";
-import { MovieList } from "components/MoviesList/MoviesList";
 import { useSearchParams } from "react-router-dom";
-import { SearchForm } from "components/SearchForm/SearchForm";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import fetchData from "services/data-fetch-api";
+import { SearchForm } from "components/SearchForm/SearchForm";
+import { MovieList } from "components/MoviesList/MoviesList";
 
 function Movies() {
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
+    // хук useSearchParams, в змінній searchParams зберігається обєкт
+    // напкриклад { query: "batman" } в ULR буде ?query=batman
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get("query") ?? "";
 
     useEffect(() => {
+        // відмінити запит з порожнім query
         if (!query) {
             return;
         }
@@ -35,13 +40,14 @@ function Movies() {
     function handleFormSubmit(event) {
         event.preventDefault();
         const form = event.currentTarget;
-        setSearchParams({ query: form.elements.query.value });
+        const formInputValue = form.elements.query.value;
+        setSearchParams(formInputValue !== "" ? { query: formInputValue } : {});
         form.reset();
     }
 
     return (
         <>
-            <h1>Welcome Movies Page</h1>
+            <h1>Welcome to Movies Page</h1>
             <SearchForm onSubmit={handleFormSubmit} />
             {movies.length === 0 && query !== "" && (
                 <p>{`We don't have any movies for query: ${query}!`}</p>
